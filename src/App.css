@@ -4,25 +4,122 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: 0.3s ease;
 }
-.border{
+.border {
   border: 1px solid black !important;
 }
 
 body {
   width: 100%;
   overflow-x: clip;
-  font-family: "Work Sans", sans-serif;
-  /* background-color: var(--body-background); */
-  /* color: var(--text-color); */
+  font-family: "Roboto", sans-serif;
+  color: #343434;
 }
 
 header {
   position: fixed;
   left: 0;
   top: 0;
+  max-width: 100px;
   height: 100vh;
   z-index: 999;
   overflow: hidden;
+  transition: max-width .3s ease;
+}
+
+
+header.active-sidebar{
+  max-width: 240px;
+  transition: max-width .3s ease;
+}
+
+main{
+  max-width: calc(100% - 100px);
+  margin-left: auto;
+  transition: widlth .3s ease;
+}
+main.active-sidebar{
+  max-width: calc(100% - 240px);
+  margin-left: auto;
+  transition: widlth .3s ease;
+
+}
+
+h1,
+.h1 {
+  font-size: 48px !important;
+  font-weight: 600 !important;
+  line-height: 1.5;
+  background-color: transparent !important;
+}
+
+h2,
+.h2 {
+  font-size: 52px !important;
+  font-weight: 600 !important;
+  line-height: 1.5;
+  background-color: transparent !important;
+}
+
+h3,
+.h3 {
+  font-size: 38px !important;
+  font-weight: 600 !important;
+  line-height: 1.5;
+  background-color: transparent !important;
+}
+
+h4,
+.h4 {
+  font-size: 28px !important;
+  font-weight: 600 !important;
+  line-height: 1.8;
+  background-color: transparent !important;
+}
+
+h5,
+.h5 {
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  line-height: 1.8;
+  background-color: transparent !important;
+}
+
+h6,
+.h6 {
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  line-height: 1.8;
+  background-color: transparent !important;
+}
+
+p,
+a {
+  font-size: 1rem !important;
+  font-weight: 400;
+  line-height: 1.8;
+  background-color: transparent !important;
+}
+
+
+
+header ul li{
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: .3s ease;
+}
+header ul li:hover, header ul li:hover svg path{
+  background-color: #0832DE;
+  color: #ffff;
+  stroke: #fff;
+  transition: .3s ease;
+}
+
+
+.custom-btn{
+  width: fit-content;
+  padding: 10px 1.25rem
+
 }
