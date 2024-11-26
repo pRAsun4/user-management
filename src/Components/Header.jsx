@@ -16,7 +16,7 @@ export default function Header({ className, isSmallScreen }) {
 
   return (
     <header
-      className={`${className} headbar h-full bg-[#F1F1F1] px-3 py-8 border `}
+      className={`${className} headbar h-full bg-[#F1F1F1] px-3 py-8  `}
     >
       <div className="w-auto flex flex-col">
         <HeaderLogo isSmallScreen={isSmallScreen} className="" />

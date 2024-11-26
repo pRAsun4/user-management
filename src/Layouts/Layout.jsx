@@ -54,7 +54,7 @@ export default function Layout({ children }) {
             : ""
         }`}
       >
-        <section className="w-full h-full p-6 flex flex-col  border">
+        <section className="w-full h-full p-6 flex flex-col  ">
           {children}
         </section>
       </main>
