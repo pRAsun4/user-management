@@ -87,9 +87,7 @@ h5,
 
 h6,
 .h6 {
-  font-size: 18px !important;
-  font-weight: 400 !important;
-  line-height: 1.8;
+ 
   background-color: transparent !important;
 }
 
@@ -103,14 +101,14 @@ a {
 
 
 
-header ul li{
+.headbar ul li{
   padding: 12px;
   font-size: 1rem;
   font-weight: 500;
   border-radius: 8px;
   transition: .3s ease;
 }
-header ul li:hover, header ul li:hover svg path{
+.headbar ul li:hover, .headbar ul li:hover svg path{
   background-color: #0832DE;
   color: #ffff;
   stroke: #fff;
@@ -122,4 +120,36 @@ header ul li:hover, header ul li:hover svg path{
   width: fit-content;
   padding: 10px 1.25rem
 
+}
+
+aside{
+  max-width: 7rem;
+  width: 100%;
+  transform: translateX(-8rem);
+  transition: .3s ease;
+  z-index: 999;
+}
+aside.active-aside{
+  transform: translateX(0);
+  transition: .3s ease;
+
+}
+
+
+@media screen and (max-width: 980px) {
+  header{
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    z-index: 0;
+    flex-direction: row !important;
+    padding: 1.25rem !important;
+  }
+  main{
+    max-width: 100%;
+    margin:  0 !important;
+  }
+  .md-hide{
+    display: none;
+  }
 }
