@@ -5,9 +5,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-.border {
-  border: 1px solid black !important;
-}
 
 body {
   width: 100%;
@@ -24,25 +21,23 @@ header {
   height: 100vh;
   z-index: 999;
   overflow: hidden;
-  transition: max-width .3s ease;
+  transition: max-width 0.3s ease;
 }
 
-
-header.active-sidebar{
+header.active-sidebar {
   max-width: 240px;
-  transition: max-width .3s ease;
+  transition: max-width 0.3s ease;
 }
 
-main{
+main {
   max-width: calc(100% - 100px);
   margin-left: auto;
-  transition: widlth .3s ease;
+  transition: widlth 0.3s ease;
 }
-main.active-sidebar{
+main.active-sidebar {
   max-width: calc(100% - 240px);
   margin-left: auto;
-  transition: widlth .3s ease;
-
+  transition: widlth 0.3s ease;
 }
 
 h1,
@@ -87,7 +82,6 @@ h5,
 
 h6,
 .h6 {
- 
   background-color: transparent !important;
 }
 
@@ -99,45 +93,97 @@ a {
   background-color: transparent !important;
 }
 
-
-
-.headbar ul li{
+.headbar ul li {
   padding: 12px;
   font-size: 1rem;
   font-weight: 500;
   border-radius: 8px;
-  transition: .3s ease;
+  transition: 0.3s ease;
 }
-.headbar ul li:hover, .headbar ul li:hover svg path{
-  background-color: #0832DE;
+.headbar ul li:hover,
+.headbar ul li:hover svg path {
+  background-color: #0832de;
   color: #ffff;
   stroke: #fff;
-  transition: .3s ease;
+  transition: 0.3s ease;
 }
 
-
-.custom-btn{
+.custom-btn {
   width: fit-content;
-  padding: 10px 1.25rem
-
+  padding: 10px 1.25rem;
 }
 
-aside{
+aside {
   max-width: 7rem;
   width: 100%;
   transform: translateX(-8rem);
-  transition: .3s ease;
+  transition: 0.3s ease;
   z-index: 999;
 }
-aside.active-aside{
+aside.active-aside {
   transform: translateX(0);
-  transition: .3s ease;
-
+  transition: 0.3s ease;
 }
+
+table thead tr {
+  border-bottom: 1px solid #F0F0F5;
+  background-color: #F0F0F5;
+}
+table > tbody {
+  vertical-align: inherit;
+}
+table tbody tr {
+  cursor: pointer;
+  border-bottom: 1px solid #F0F0F5 !important;
+  background-color: #fff;
+}
+table tbody tr:hover {
+  background-color: #fbfbfb !important;
+  transition: 0.3s ease;
+}
+table tbody tr {
+  font-size: 13px;
+  color: var(--text-color);
+  height: 50px;
+  line-height: normal;
+  padding: 0 15px;
+  text-align: left;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+table tbody tr.sm-width {
+  width: 36px !important;
+}
+table thead tr th {
+  font-size: 11px;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  line-height: normal;
+  padding: 10px 15px;
+  text-align: left;
+  transition: background-color 0.3s;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+button.edt-btn:hover, button.dlt-btn:hover {
+  background-color: #fff;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: .3s ease;
+}
+button.edt-btn:hover svg path{
+  stroke: #0832de;
+  transition: .3s ease;
+}
+button.dlt-btn:hover svg path{
+  stroke: #ec2a2a;
+  transition: .3s ease;
+}
+
 
 
 @media screen and (max-width: 980px) {
-  header{
+  header {
     position: relative;
     max-width: 100%;
     width: 100%;
@@ -145,11 +191,12 @@ aside.active-aside{
     flex-direction: row !important;
     padding: 1.25rem !important;
   }
-  main{
+  main {
     max-width: 100%;
-    margin:  0 !important;
+    margin: 0 !important;
+    min-height: fit-content !important;
   }
-  .md-hide{
+  .md-hide {
     display: none;
   }
 }

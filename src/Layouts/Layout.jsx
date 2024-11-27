@@ -46,7 +46,7 @@ export default function Layout({ children }) {
       )}
       <main
         id="main"
-        className={`min-h-screen  ${
+        className={`h-auto md:min-h-screen  ${
           sidebarOpen && isSmallScreen
             ? ""
             : sidebarOpen
@@ -54,7 +54,7 @@ export default function Layout({ children }) {
             : ""
         }`}
       >
-        <section className="w-full h-full p-6 flex flex-col  ">
+        <section className="w-full h-full p-4 md:p-6 flex flex-col  ">
           {children}
         </section>
       </main>
