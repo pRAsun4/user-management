@@ -2,8 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   sidebarVisible: false,
-  asideVisible: false
+  asideVisible: false,
+  userId: ''
 };
+
 
 const appSlice = createSlice({
   name: "app",
@@ -14,10 +16,16 @@ const appSlice = createSlice({
     },
     toggleAsidebar: (state) => {
       state.asideVisible = !state.asideVisible;
-    }
+    },
+    setUserId: (state, action) => {
+      state.userId = action.payload; 
+    },
+    resetUserId: (state) => {
+      state.userId = ""; 
+    },
     
   },
 });
 
-export const { toggleSidebar, toggleAsidebar } = appSlice.actions;
+export const { toggleSidebar, toggleAsidebar, setUserId, resetUserId } = appSlice.actions;
 export default appSlice.reducer;

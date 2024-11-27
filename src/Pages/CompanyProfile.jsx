@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect, useId, useState } from "react";
 import Layout from "../Layouts/Layout";
 import PhotoSvg from "../assets/photo.svg";
 import penSvg from "../assets/pen.svg";
 import plusIcon from "../assets/icon-plus.png";
 import { AdData } from "../CustomApiData/ApiData";
+import CompanyModal from "../Components/modal/CompanyModal";
 
 export default function CompanyProfile() {
+  
   return (
     <Layout>
       <div className="w-full flex flex-col max-w-[34.375rem] relative ">
@@ -15,10 +17,11 @@ export default function CompanyProfile() {
           </div>
           <h6 className=" inline-flex items-center gap-4 sm:text-[2rem] text-[1.5rem] md:text-[2.625rem] font-bold ">
             Workplace name
-            <span className="cursor-pointer">
+            <button  className="cursor-pointer">
               <img src={penSvg} alt="pen icon" />
-            </span>
+            </button>
           </h6>
+          
         </div>
 
         <div className="w-full flex flex-col mt-8 gap-7">
@@ -56,27 +59,51 @@ export default function CompanyProfile() {
           <h5 className=" text-[2rem] font-normal ">WorkSpace Details</h5>
 
           <div className="w-full flex items-center gap-3 mt-6 ">
-            <input type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="demo@company.com" required />
+            <input
+              type="email"
+              id="email"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+              placeholder="demo@company.com"
+              required
+            />
             <button type="button" className="btn">
-              <img src={penSvg} alt="pen icon"  />
+              <img src={penSvg} alt="pen icon" />
             </button>
           </div>
           <div className="w-full flex items-center gap-3 mt-6 ">
-            <input type="number" id="mobileNumber" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="123-456-789" required />
+            <input
+              type="number"
+              id="mobileNumber"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+              placeholder="123-456-789"
+              required
+            />
             <button type="button" className="btn">
-              <img src={penSvg} alt="pen icon"  />
+              <img src={penSvg} alt="pen icon" />
             </button>
           </div>
           <div className="w-full flex items-center gap-3 mt-6 ">
-            <input type="text" id="address" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="address" required />
+            <input
+              type="text"
+              id="address"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+              placeholder="address"
+              required
+            />
             <button type="button" className="btn">
-              <img src={penSvg} alt="pen icon"  />
+              <img src={penSvg} alt="pen icon" />
             </button>
           </div>
           <div className="w-full flex items-center gap-3 mt-6 ">
-            <input type="number" id="gstNumber" className="bg-gray-50 border  text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="gst_num: 9487" required />
+            <input
+              type="number"
+              id="gstNumber"
+              className="bg-gray-50 border  text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+              placeholder="gst_num: 9487"
+              required
+            />
             <button type="button" className="btn">
-              <img src={penSvg} alt="pen icon"  />
+              <img src={penSvg} alt="pen icon" />
             </button>
           </div>
         </div>
@@ -84,6 +111,3 @@ export default function CompanyProfile() {
     </Layout>
   );
 }
-
-
-

@@ -122,7 +122,7 @@ export default function UserList() {
           </div>
           <button
             type="button"
-            onClick={handleAddPeople}
+            onClick={() => handleAddPeople()}
             className=" px-4 py-2 rounded-md text-white bg-blue-700 hover:bg-blue-800 text-[12px] border"
           >
             add people
@@ -198,7 +198,7 @@ export default function UserList() {
           </table>
           {active ? <Modal isOpen={active} onClose={() => setActive(false)} user="users" userId={userId} updateMethod="PUT" /> : null }
           {deleteModal ? <Modal isOpen={deleteModal} onClose={() => setDeleteModal(false)} user="users" userId={userId} updateMethod="DELETE" /> : null }
-          {addModal ? <Modal isOpen={addModal} onClose={() => setAddModal(false)} user="users"  updateMethod="POST" /> : null }
+          {addModal ? <Modal isOpen={addModal} onClose={() => setAddModal(false)} user="users"   updateMethod="POST" /> : null }
         </div>
       </div>
     </Layout>
