@@ -2,12 +2,17 @@ import React, { useEffect, useState } from "react";
 import Layout from "../Layouts/Layout";
 import Delete from "../assets/Delete";
 import Pen from "../assets/Pen";
+import Modal from "../Components/modal/Modal";
 
 export default function UserList() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [active, setActive] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
+  const [addModal, setAddModal] = useState(false);
+  const [userId, setUserId] = useState()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,6 +52,20 @@ export default function UserList() {
 
     return `https://eu.ui-avatars.com/api/?name=${initials}&size=250`;
   };
+
+  const handleEditUser = (userId) => {
+    setActive(!active)
+    setUserId(userId)
+    
+  }
+  const handleDeleteUser = (userId) => {
+    setDeleteModal(!deleteModal);
+    setUserId(userId);
+  }
+  const handleAddPeople = () => {
+    setAddModal(!addModal);
+    
+  }
 
   if (loading) {
     return <p>Loading...</p>;
@@ -103,6 +122,7 @@ export default function UserList() {
           </div>
           <button
             type="button"
+            onClick={handleAddPeople}
             className=" px-4 py-2 rounded-md text-white bg-blue-700 hover:bg-blue-800 text-[12px] border"
           >
             add people
@@ -165,10 +185,10 @@ export default function UserList() {
                         {user.companyName}
                       </td>
                       <td width="300" className="px-4 py-3 text-right">
-                        <button className="p-3 edt-btn  text-white text-sm rounded  focus:outline-none border">
+                        <button onClick={() => handleEditUser(user.id)} className="p-3 edt-btn  text-white text-sm rounded  focus:outline-none border">
                           <Pen />
                         </button>
-                        <button className="p-3 ml-3 dlt-btn  text-white text-sm rounded  focus:outline-none border">
+                        <button onClick={() => handleDeleteUser((user.id))} className="p-3 ml-3 dlt-btn  text-white text-sm rounded  focus:outline-none border">
                           <Delete />
                         </button>
                       </td>
@@ -176,6 +196,9 @@ export default function UserList() {
                   ))}
               </tbody>
           </table>
+          {active ? <Modal isOpen={active} onClose={() => setActive(false)} user="users" userId={userId} updateMethod="PUT" /> : null }
+          {deleteModal ? <Modal isOpen={deleteModal} onClose={() => setDeleteModal(false)} user="users" userId={userId} updateMethod="DELETE" /> : null }
+          {addModal ? <Modal isOpen={addModal} onClose={() => setAddModal(false)} user="users"  updateMethod="POST" /> : null }
         </div>
       </div>
     </Layout>

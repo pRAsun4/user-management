@@ -19,7 +19,7 @@ header {
   top: 0;
   max-width: 100px;
   height: 100vh;
-  z-index: 999;
+  z-index: 99;
   overflow: hidden;
   transition: max-width 0.3s ease;
 }
@@ -126,15 +126,15 @@ aside.active-aside {
 }
 
 table thead tr {
-  border-bottom: 1px solid #F0F0F5;
-  background-color: #F0F0F5;
+  border-bottom: 1px solid #f0f0f5;
+  background-color: #f0f0f5;
 }
 table > tbody {
   vertical-align: inherit;
 }
 table tbody tr {
   cursor: pointer;
-  border-bottom: 1px solid #F0F0F5 !important;
+  border-bottom: 1px solid #f0f0f5 !important;
   background-color: #fff;
 }
 table tbody tr:hover {
@@ -166,21 +166,95 @@ table thead tr th {
   vertical-align: middle;
   white-space: nowrap;
 }
-button.edt-btn:hover, button.dlt-btn:hover {
+button.edt-btn:hover,
+button.dlt-btn:hover {
   background-color: #fff;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: .3s ease;
+  transition: 0.3s ease;
 }
-button.edt-btn:hover svg path{
+button.edt-btn:hover svg path {
   stroke: #0832de;
-  transition: .3s ease;
+  transition: 0.3s ease;
 }
-button.dlt-btn:hover svg path{
+button.dlt-btn:hover svg path {
   stroke: #ec2a2a;
-  transition: .3s ease;
+  color: #ec2a2a;
+  transition: 0.3s ease;
 }
 
+/* Blur transparent background */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
+/* Modal box */
+.modal-container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* Form elements */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-container input,
+.modal-container textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modal-container textarea {
+  resize: none;
+  height: 80px;
+}
+
+/* Buttons */
+.modal-buttons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-container button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-container button:hover {
+  opacity: 0.8;
+}
+
+.modal-container button[type="button"] {
+  background: #fff;
+  color: #ec2a2a;
+}
+
+.modal-container button[type="submit"] {
+  background: #46b44a;
+  color: white;
+}
 
 @media screen and (max-width: 980px) {
   header {
