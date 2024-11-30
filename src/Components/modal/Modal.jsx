@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AddFields from "../AddFields";
 
-export default function Modal({ isOpen, onClose, user, userId, updateMethod }) {
+export default function Modal({ isOpen, onClose, user, userId, updateMethod, nameUpdate }) {
   const [singleUser, setSingleUser] = useState();
   const [formData, setFormData] = useState({
     name: "",
@@ -15,7 +15,7 @@ export default function Modal({ isOpen, onClose, user, userId, updateMethod }) {
     companyId: "",
   });
 
-  console.log(isOpen, "isopen");
+  console.log(userId, "userId");
   useEffect(() => {
     if (userId != null) {
       const fetchData = async () => {
@@ -118,7 +118,7 @@ export default function Modal({ isOpen, onClose, user, userId, updateMethod }) {
                   placeholder="Enter your name"
                 />
               </label>
-              <label className="text-left">
+              <label className={`text-left ${nameUpdate ? 'hidden' : 'flex flex-col'} `}>
                 Address:
                 <input
                   type="text"
@@ -128,7 +128,7 @@ export default function Modal({ isOpen, onClose, user, userId, updateMethod }) {
                   placeholder="Enter your name"
                 />
               </label>
-              <label className="text-left">
+              <label className={`text-left ${nameUpdate ? 'hidden' : 'flex flex-col'} `}>
                 Email:
                 <input
                   type="email"
@@ -138,7 +138,7 @@ export default function Modal({ isOpen, onClose, user, userId, updateMethod }) {
                   placeholder="Enter your email"
                 />
               </label>
-              <label className="text-left">
+              <label className={`text-left ${nameUpdate ? 'hidden' : 'flex flex-col'} `}>
                 Mobile no:
                 <input
                   type="text"
@@ -151,83 +151,7 @@ export default function Modal({ isOpen, onClose, user, userId, updateMethod }) {
              
             </>
           )}
-          {/* {userId == null (
-            <>
-                <AddFields
-                label="Name"
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                placeholder="Enter name"
-                required
-              />
-              <AddFields
-                label="Avatar URL"
-                type="text"
-                name="avatar"
-                value={formData.avatar}
-                onChange={handleInputChange}
-                placeholder="Enter avatar URL"
-              />
-              <AddFields
-                label="Email"
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                placeholder="Enter email"
-                required
-              />
-              <AddFields
-                label="Mobile Number"
-                type="text"
-                name="mobileNumber"
-                value={formData.mobileNumber}
-                onChange={handleInputChange}
-                placeholder="Enter mobile number"
-              />
-              <AddFields
-                label="Currency"
-                type="text"
-                name="currency"
-                value={formData.currency}
-                onChange={handleInputChange}
-                placeholder="Enter currency"
-              />
-              <AddFields
-                label="Is Active"
-                type="checkbox"
-                name="isActive"
-                checked={formData.isActive}
-                onChange={handleInputChange}
-              />
-              <AddFields
-                label="Total Unpaid Booking"
-                type="text"
-                name="totalUnpaidBooking"
-                value={formData.totalUnpaidBooking}
-                onChange={handleInputChange}
-                placeholder="Enter total unpaid booking"
-              />
-              <AddFields
-                label="Available Limit"
-                type="number"
-                name="availableLimit"
-                value={formData.availableLimit}
-                onChange={handleInputChange}
-                placeholder="Enter available limit"
-              />
-              <AddFields
-                label="Company ID"
-                type="text"
-                name="companyId"
-                value={formData.companyId}
-                onChange={handleInputChange}
-                placeholder="Enter company ID"
-              />
-            </>
-          )} */}
+          
           <div className="modal-buttons">
             <button type="button" className="dlt-btn !border" onClick={onClose}>
               Close

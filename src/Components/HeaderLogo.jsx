@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import CompanyModal from "./modal/CompanyModal";
+import { AvatarFunc, truncate } from "../hook/Hook";
 
 export default function HeaderLogo({ className, isSmallScreen }) {
   const sidebarOpen = useSelector((state) => state.app.sidebarVisible);
@@ -8,7 +9,6 @@ export default function HeaderLogo({ className, isSmallScreen }) {
   const [user, setUser] = useState([]);
   const userId = useSelector((state) => state.app.userId);
   const companyId = parseInt(userId);
-  console.log(user, "user");
 
   const handleModal = () => {
     setModal(!modal);
@@ -16,7 +16,6 @@ export default function HeaderLogo({ className, isSmallScreen }) {
 
   useEffect(() => {
     if (isNaN(companyId)) {
-      console.error("Invalid userId");
       return;
     }
 
@@ -41,6 +40,8 @@ export default function HeaderLogo({ className, isSmallScreen }) {
     fetchData();
   }, [companyId]);
 
+  
+
   return (
     <div
       className={`w-auto flex flex-col justify-center items-center ${className}`}
@@ -50,12 +51,17 @@ export default function HeaderLogo({ className, isSmallScreen }) {
         className="w-16 h-16 flex items-center justify-center overflow-hidden rounded-full "
       >
         <img
-          src="https://eu.ui-avatars.com/api/?name=Company+Name&size=250"
+          src={
+            (user && AvatarFunc(user.companyName)) ||
+            "https://eu.ui-avatars.com/api/?name=W+Name&size=250"
+          }
           alt="company logo"
         />
       </button>
       {isSmallScreen && sidebarOpen ? null : sidebarOpen ? (
-        <h2 className="h4">Company name</h2>
+        <h2 className="h4">
+          {(user && truncate(user.companyName, 12)) || "Workplace name"}
+        </h2>
       ) : null}
       {modal ? (
         <CompanyModal isOpen={modal} onClose={() => setModal(false)} />

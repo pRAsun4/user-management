@@ -3,6 +3,7 @@ import Layout from "../Layouts/Layout";
 import Delete from "../assets/Delete";
 import Pen from "../assets/Pen";
 import Modal from "../Components/modal/Modal";
+import { AvatarFunc, truncate } from "../hook/Hook";
 
 export default function UserList() {
   const [users, setUsers] = useState([]);
@@ -38,20 +39,7 @@ export default function UserList() {
   const filteredUsers = users.filter((user) =>
     user.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
-  const truncate = (text, length) => {
-    return text.length > length ? text.slice(0, length) + "..." : text;
-  };
-
-  const AvatarFunc = (name) => {
-    if (!name) return "";
-
-    const initials = name
-      .split(" ")
-      .map((part) => part[0])
-      .join("+");
-
-    return `https://eu.ui-avatars.com/api/?name=${initials}&size=250`;
-  };
+  
 
   const handleEditUser = (userId) => {
     setActive(!active)
@@ -198,7 +186,8 @@ export default function UserList() {
           </table>
           {active ? <Modal isOpen={active} onClose={() => setActive(false)} user="users" userId={userId} updateMethod="PUT" /> : null }
           {deleteModal ? <Modal isOpen={deleteModal} onClose={() => setDeleteModal(false)} user="users" userId={userId} updateMethod="DELETE" /> : null }
-          {addModal ? <Modal isOpen={addModal} onClose={() => setAddModal(false)} user="users"   updateMethod="POST" /> : null }
+          {addModal ? <Modal isOpen={addModal} onClose={() => setAddModal(false)} user="users"   updateMethod="POST" /> : null } 
+            {/* addmodal is not opening */}
         </div>
       </div>
     </Layout>
